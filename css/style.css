@@ -1,0 +1,229 @@
+/*!
+ *  Profile Widget
+ *
+ */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #f2f6fc;
+  font: 1.6em/1.6em Raleway, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* == Scaffold */
+
+.container {
+  margin: 0 auto;
+  width: 640px;
+}
+
+/* == Main styles */
+
+.user-widget {
+  background: #fff;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.profile {
+    
+}
+
+  .profile .name {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+  }
+
+  .profile .photo {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  .profile .photo:hover {
+    background-color: #eee;
+  }
+
+    .profile .photo > img {
+      display: block;
+      border-radius: 50%;
+      width: 150px;
+    }
+
+  .profile .summary {
+    margin-left: 170px;
+  }
+
+    .profile .summary > .count {
+      font-family: Arial;
+      float: left;
+      width: 32%;
+    }
+
+    .profile .count:hover i.fa {
+      /*-webkit-transform: ;*/
+    }
+
+.posts {
+  position: relative;
+  overflow: hidden;
+}
+
+.posts .list {
+  border: solid #f2f6fc;
+  border-width: 1px 0 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+  .post {
+    display: none;
+  }
+
+    .post.active {
+      display: block;
+    }
+
+/* == Controls & Forms */
+
+.posts:hover .nav > a {
+  top: 10px;
+}
+
+.nav > a {
+  position: absolute;
+  color: #3f7dd8;
+  text-decoration: none;
+  font-size: 1.4em;
+  opacity: 0.5;
+  top: -50px;
+  filter: alpha(opacity=50);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+  .nav > a:hover {
+    opacity: 1;
+    filter: alpha(opacity=1);
+  }
+
+  .nav > a.prev {
+    right: 70px;
+  }
+
+  .nav > a.next {
+    right: 30px;
+  }
+
+.controls {
+  padding: 20px;
+}
+
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+input, button, textarea {
+  font-family: Raleway, sans-serif;
+}
+
+.btn {
+  background-color: #3f7dd8;
+  border: 1px solid #3f7dd8;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+  .btn:hover {
+    background-color: transparent;
+    color: #3f7dd8;
+  }
+
+  .btn i {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
+  .btn:hover > i {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  .btn.big {
+    border-width: 2px;
+    font-size: 1.1em;
+  }
+
+  .btn.inverse {
+    color: #3f7dd8;
+    background-color: transparent;
+  }
+
+  .btn.inverse:hover {
+    background-color: #3f7dd8;
+    color: #fff;
+  }
+
+/* == Helpers */
+
+.fl-l {
+  float: left;
+}
+
+.fl-r {
+  float: right;
+}
+
+.box {
+  padding: 10px;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; 
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
