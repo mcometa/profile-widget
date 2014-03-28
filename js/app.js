@@ -25,7 +25,15 @@ var messages,
       },
 
       newPost: function() {
-        // Append a new post form in the posts container, replace the 'New'
+        // Dim and disable other elements and append a new post form in the posts container. 
+        // Replace the 'New Post' with 'Post' and show the cancel button
+        // When done, post should be added at the last of the list of post. (update the time-ago)
+        // Focus on the new post.
+
+      },
+
+      likePost: function() {
+        // 
       },
 
       showPrev: function() {
