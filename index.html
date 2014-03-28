@@ -31,15 +31,24 @@
       </div>
       <div class="posts">
 
-        <div class="list">
-          <div class="post active box">
+        <div id="js-post-list" class="list">
+          <div class="post cf active box">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, nostrum non illum reiciendis commodi aliquam possimus quos. Doloribus, vel, adipisci, enim fuga ad repudiandae quia dicta aspernatur doloremque voluptatem beatae.</p>
+            <small class="time-ago">
+              <i class="fa fa-clock-o"></i> Just now
+            </small>
           </div>
-          <div class="post box">
+          <div class="post cf box">
             <p>Sed, ut, voluptas, cum dolores nesciunt sint dolor reiciendis libero laboriosam cupiditate magni dignissimos deleniti sit blanditiis architecto soluta nulla earum harum ab doloremque officiis illo consectetur tenetur est exercitationem!</p>
+            <small class="time-ago">
+              <i class="fa fa-clock-o"></i> 1 hr ago
+            </small>
           </div>
-          <div class="post box">
+          <div class="post cf box">
             <p>Dicta, culpa, nobis, quae, reprehenderit sed placeat excepturi natus dolorem architecto pariatur corporis illum? Nobis, alias perspiciatis molestias dignissimos esse facere doloremque itaque eius sequi provident dicta numquam vero quos.</p>
+            <small class="time-ago">
+              <i class="fa fa-clock-o"></i> Yesterday, 9:30 AM
+            </small>
           </div>
         </div>
 
@@ -59,20 +68,44 @@
               <i class="fa fa-pencil"></i> New Post
             </button>
 
-            <button class="btn big fl-r inverse js-like-post">
+            <button class="btn btn-bar big fl-r inverse js-like-post">
               <i class="fa fa-heart"></i>
             </button>
 
-            <button class="btn big fl-r inverse js-reply-post">
+            <button class="btn btn-bar big fl-r inverse js-reply-post">
               <i class="fa fa-mail-reply"></i>
             </button>
-
           </div>
-
-
         </div>
 
       </div>
+    </div>
+
+  </div>
+
+  <!-- templates -->
+
+  <div id="new-post" class="box">
+    
+    <div class="new-post-container box">
+
+      <div class="new-post-form">
+        
+        <form action="">
+          
+          <textarea name="post_content" id="post-content" cols="30" rows="10" placeholder="How was the weather today?"></textarea>
+
+        </form>
+
+      </div>
+      
+      <div class="post-controls cf">
+          
+        <button class="btn big fl-l js-new-post">
+          <i class="fa fa-pencil"></i> Post
+        </button>
+      </div>
+
     </div>
 
   </div>
