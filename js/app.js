@@ -16,12 +16,16 @@ var messages,
       attachEvents: function() {
         var newPost   = document.querySelector('.js-new-post'),
             likePost  = document.querySelector('.js-like-post'),
-            replyPost = document.querySelector('.js-reply-post');
+            replyPost = document.querySelector('.js-reply-post'),
+            nextPost  = document.querySelector('.js-next-post'),
+            prevPost  = document.querySelector('.js-prev-post');
 
 
         newPost.addEventListener('click', this.newPost, false);
         likePost.addEventListener('click', this.likePost, false);
         replyPost.addEventListener('click', this.replyPost, false);
+        nextPost.addEventListener('click', this.nextPost, false);
+        prevPost.addEventListener('click', this.prevPost, false);
       },
 
       newPost: function() {
@@ -36,12 +40,28 @@ var messages,
         // 
       },
 
-      showPrev: function() {
+      nextPost: function(e) {
+        e.preventDefault();
         var activePost = document.querySelector('.post.active');
-        var nextPostToActive = activePost.nextElementSibling();
+        var nextPostToActive = activePost.nextElementSibling;
+
+        if (nextPostToActive !== null) {
+          activePost.classList.remove('active');
+          nextPostToActive.classList.add('active');          
+        }
+
+        console.log( nextPostToActive );
+      },
+
+      prevPost: function(e) {
+        e.preventDefault();
+        var activePost = document.querySelector('.post.active');
+        var prevPostToActive = activePost.previousElementSibling;
+        
+        
 
         activePost.classList.remove('active');
-        nextPostToActive.classList.add('active');
+        prevPostToActive.classList.add('active');
       },
 
 

@@ -117,11 +117,31 @@ input, button, textarea {
       display: block;
     }
 
-    .post > .time-ago {
+    .post > .post-meta {
+      color: #888;
+    }
+
+    .post > .post-meta .time-ago {
       font-size: 0.8em;
-      color: #333;
       float: right;
     }
+
+    .post > .post-meta > small {
+      margin-right: 5px;
+    }
+
+.count,
+.time {
+  font-family: Arial;
+}
+
+.fa-comment,
+.fa-comments,
+.fa-thumb-tack,
+.fa-heart,
+.count {
+  color: #488ab5;
+}
 
 /* == Controls & Forms */
 
@@ -174,8 +194,8 @@ input, button, textarea {
 }
 
 .btn {
-  background-color: #3f7dd8;
-  border: 1px solid #3f7dd8;
+  background-color: #488ab5;
+  border: 1px solid #488ab5;
   color: #fff;
   cursor: pointer;
   padding: 4px 8px;
@@ -190,7 +210,7 @@ input, button, textarea {
 
   .btn:hover {
     background-color: transparent;
-    color: #3f7dd8;
+    color: #488ab5;
   }
 
   .btn i {
