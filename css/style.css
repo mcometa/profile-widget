@@ -142,6 +142,7 @@ input, button, textarea {
     left: 0;
     width: 100%;
     padding: 10px;
+    height: 210px;
   }
 
   .new-post .post-controls {
@@ -165,7 +166,7 @@ input, button, textarea {
 
 .profile .stats > .count {
   float: left;
-  width: 32%;
+  width: 31%;
 }
 
 .profile .stats > .count > .count {
@@ -183,6 +184,7 @@ input, button, textarea {
   font-size: 0.6em;
   text-transform: uppercase;
   line-height: 1;
+  font-family: Raleway, Arial;
 }
 
 /* == Controls & Forms */
@@ -607,7 +609,7 @@ and (max-width : 480px) {
   }
 
   .profile .photo {
-    width: 90px;
+    width: 80px;
     margin-right: 0;
   }
 
@@ -662,6 +664,8 @@ and (max-width : 480px) {
 
   .nav > a {
     font-size: 1em;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
   }
 
   .nav > a.prev {
