@@ -155,10 +155,6 @@ input, button, textarea {
 
 /* == Controls & Forms */
 
-.posts:hover .nav > a {
-  top: 110px;
-}
-
 .controls {
   border-top: 1px solid #efefef;
   background-color: #fcfcfc;
@@ -168,11 +164,11 @@ input, button, textarea {
 .nav > a {
   color: #3f7dd8;
   font-size: 1.8em;
-  opacity: 0.3;
+  opacity: 0;
   position: absolute;
   text-decoration: none;
-  top: -50px;
-  filter: alpha(opacity=30);
+  top: 110px;
+  filter: alpha(opacity=0);
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
@@ -180,17 +176,41 @@ input, button, textarea {
   transition: all 0.2s;
 }
 
-  .nav > a:hover {
-    opacity: 1;
-    filter: alpha(opacity=1);
+
+  .posts:hover .nav > a {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
   }
 
-  .nav > a.prev {
+  .posts:hover .nav > a.prev {
     left: 30px;
   }
 
-  .nav > a.next {
+  .posts:hover .nav > a.next {
     right: 30px;
+  }
+
+  .nav > a:hover {
+    opacity: 1 !important;
+    filter: alpha(opacity=1) !important;
+  }
+
+  .nav > a.prev {
+    left: 50px;
+  }
+
+  .nav > a.next {
+    right: 50px;
+  }
+
+  .nav > a.disabled {
+    cursor: default;
+  }
+
+  .nav > a.disabled:hover {
+    cursor: default;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
   }
 
 .controls {
@@ -216,6 +236,11 @@ input, button, textarea {
   -o-transition: all 0.2s;
   transition: all 0.2s;
 }
+
+  .btn:active {
+    position: relative;
+    top: 3px;
+  }
 
   .btn:hover {
     background-color: transparent;
@@ -291,10 +316,11 @@ input, button, textarea {
 
 .slide {
   position: relative;
-  /*-webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
   -o-transition: -o-transform 0.3s;
-  transition: -ms-transform 0.3s;*/
-  transition: all 0.3s;
+  transition: -ms-transform 0.3s;
+  transition: transform 0.3s;
+  transition: -webkit-transform 0.3s;
 }
 
   .slide.to-left {
@@ -319,6 +345,14 @@ input, button, textarea {
     -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
     transform: translateX(100%);
+  }
+
+  .from-left {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
 
   .from-right.to-left,

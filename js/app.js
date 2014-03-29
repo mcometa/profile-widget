@@ -12,6 +12,7 @@ var messages,
       init: function() {
         self = this;
         self.attachEvents();
+        self.setDisabledButton();
         console.log("App:init()");
       },
 
@@ -23,11 +24,11 @@ var messages,
             prevPost  = document.querySelector('.js-prev-post');
 
 
-        newPost.addEventListener('click', self.newPost, false);
-        likePost.addEventListener('click', self.likePost, false);
-        replyPost.addEventListener('click', self.replyPost, false);
-        nextPost.addEventListener('click', self.nextPost, false);
-        prevPost.addEventListener('click', self.prevPost, false);
+        newPost.addEventListener('click', self.newPost, true);
+        likePost.addEventListener('click', self.likePost, true);
+        replyPost.addEventListener('click', self.replyPost, true);
+        nextPost.addEventListener('click', self.nextPost, true);
+        prevPost.addEventListener('click', self.prevPost, true);
       },
 
       newPost: function() {
@@ -48,33 +49,86 @@ var messages,
         var nextPostToActive = activePost.nextElementSibling;
 
         if (nextPostToActive !== null) {
-          activePost.classList.remove('active');
-          activePost.classList.add('to-left');
           
+          activePost.classList.add('slide', 'to-left');
           self.hideElement( activePost );
 
-          nextPostToActive.classList.remove('hide');
-          nextPostToActive.classList.add('active', 'to-left');          
+          nextPostToActive.classList.add('slide', 'from-right');
+          self.showElement( nextPostToActive, ['slide', 'from-right', 'to-left', 'active'] );
         }
+
+        self.setDisabledButton();
 
         console.log( nextPostToActive );
       },
 
       prevPost: function(e) {
         e.preventDefault();
+        console.log(e);
         var activePost = document.querySelector('.post.active');
         var prevPostToActive = activePost.previousElementSibling;
-        
-        
 
-        activePost.classList.remove('active');
-        prevPostToActive.classList.add('active');
+        if (prevPostToActive !== null ) {
+          
+          activePost.classList.add('slide', 'to-right');
+          self.hideElement( activePost );
+
+          prevPostToActive.classList.add('slide', 'from-left');
+          self.showElement( prevPostToActive, ['slide', 'from-left', 'to-right', 'active'] );
+        }
+
+        self.setDisabledButton();
+
+        console.log( prevPostToActive );
       },
 
       hideElement: function(elem) {
         setTimeout( function() {
           elem.classList.add('hide');
-        }, 200);
+          elem.classList.remove('active');
+        }, 315);
+
+        self.removeSlideClasses(elem);
+      },
+
+      showElement: function(elem, className) {
+        setTimeout(function(){
+          elem.classList.remove('hide');
+        }, 310);
+        className.forEach( function( element ) {
+          console.log(element);
+          setTimeout(function(){
+            elem.classList.add(element);
+            self.removeSlideClasses(elem);
+          }, 315);
+        });   
+      },
+
+      removeSlideClasses: function(elem) {
+        setTimeout( function() {
+          elem.classList.remove('slide', 'from-right', 'from-left', 'to-right', 'to-left');
+        }, 315);
+      },
+
+      setDisabledButton: function() {
+        //check if has next or prev post, if no post, add class `disabled` to the button
+
+        var elemNext = document.querySelector('.post.active').nextElementSibling,
+            elemPrev = document.querySelector('.post.active').previousElementSibling,
+            nextBtn = document.querySelector('a.next'),
+            prevBtn = document.querySelector('a.prev');
+
+        if ( elemNext === null ) {
+          nextBtn.classList.add('disabled');
+        } else {
+          nextBtn.classList.remove('disabled');
+        }
+
+        if ( elemPrev === null ) {
+          prevBtn.classList.add('disabled');
+        } else {
+          prevBtn.classList.remove('disabled');
+        }
       }
 
 
