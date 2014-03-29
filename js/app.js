@@ -2,12 +2,6 @@
 var messages,
     self,
     App = {
-
-      messages: [
-        'How was the weather today? Was it sunny and perfect?',
-        'Did you get stuck at traffic? Tell us more about it.',
-        'What is on your mind?'
-      ],
       
       init: function() {
         self = this;
@@ -36,6 +30,8 @@ var messages,
         // Replace the 'New Post' with 'Post' and show the cancel button
         // When done, post should be added at the last of the list of post. (update the time-ago)
         // Focus on the new post.
+
+        self.showModal();
 
       },
 
@@ -178,6 +174,34 @@ var messages,
         } else if ( post !== null && post.classList.contains('liked') ) {
           document.querySelector('.js-like-post').classList.add('liked');
         }
+      },
+
+      showModal: function() {
+
+        var modalBgDiv = document.createElement("div");
+
+        modalBgDiv.className="modal-bg";
+        document.body.appendChild( modalBgDiv );
+        setTimeout(function(){
+          document.querySelector('.modal-bg').classList.add('show');
+        }, 120);
+
+        var modalDiv = document.createElement("div");
+        modalDiv.className = "modal slide";
+        var form = document.querySelector("#new-post");
+        modalDiv.appendChild( form );
+        form.classList.remove('hide')
+        document.body.appendChild( modalDiv );
+        setTimeout(function(){
+          document.querySelector('.modal').classList.add('down');
+        }, 450);
+      },
+
+      insertPost: function() {
+        var newPostContent = document.querySelector("#post-content").innerHtml,
+            postList = document.querySelector("#js-post-list");
+
+
       }
 
 
