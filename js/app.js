@@ -39,8 +39,39 @@ var messages,
 
       },
 
-      likePost: function() {
-        // 
+      likePost: function(e) {
+
+        // remove the button border, change the color to pink, increase the like count
+
+        e.preventDefault();
+        e.cancelBubble = true;
+
+        var postMetaLike = document.querySelector('.post.active .meta .likes .count'),
+            activePost = document.querySelector('.post.active'),
+            likes;
+
+        // handle event bubbling the hard way
+        if ( e.target.classList.contains('fa') ) {
+          if (!e.target.parentElement.classList.contains('liked')) {
+            e.target.parentElement.classList.add('liked');
+            activePost.classList.add('liked');
+            activePost.querySelector('.fa-heart').classList.add('pulsate-once');
+            likes = parseInt(postMetaLike.textContent);
+            likes+=1;
+            postMetaLike.textContent = likes;
+          }
+        } 
+        if ( e.target.classList.contains('js-like-post') && !e.target.classList.contains('liked') ) {
+          e.target.classList.add('liked');
+          activePost.classList.add('liked');
+          activePost.querySelector('.fa-heart').classList.add('pulsate-once');
+          likes = parseInt(postMetaLike.textContent);
+          likes+=1;
+          postMetaLike.textContent = likes;
+        }
+
+
+        console.log(e.target.classList);
       },
 
       nextPost: function(e) {
@@ -48,7 +79,7 @@ var messages,
         var activePost = document.querySelector('.post.active');
         var nextPostToActive = activePost.nextElementSibling;
 
-        if (nextPostToActive !== null) {
+        if ( nextPostToActive !== null ) {
           
           activePost.classList.add('slide', 'to-left');
           self.hideElement( activePost );
@@ -58,17 +89,15 @@ var messages,
         }
 
         self.setDisabledButton();
-
-        console.log( nextPostToActive );
+        self.toggleLikeButton( nextPostToActive );
       },
 
       prevPost: function(e) {
         e.preventDefault();
-        console.log(e);
         var activePost = document.querySelector('.post.active');
         var prevPostToActive = activePost.previousElementSibling;
 
-        if (prevPostToActive !== null ) {
+        if ( prevPostToActive !== null ) {
           
           activePost.classList.add('slide', 'to-right');
           self.hideElement( activePost );
@@ -78,8 +107,7 @@ var messages,
         }
 
         self.setDisabledButton();
-
-        console.log( prevPostToActive );
+        self.toggleLikeButton( prevPostToActive );
       },
 
       hideElement: function(elem) {
@@ -95,13 +123,14 @@ var messages,
         setTimeout(function(){
           elem.classList.remove('hide');
         }, 310);
+
+        // sidenote: forEach is not needed, if you wish to change all classNames use the Element.className instead. GAHHHH!
         className.forEach( function( element ) {
-          console.log(element);
           setTimeout(function(){
             elem.classList.add(element);
             self.removeSlideClasses(elem);
           }, 315);
-        });   
+        });
       },
 
       removeSlideClasses: function(elem) {
@@ -128,6 +157,14 @@ var messages,
           prevBtn.classList.add('disabled');
         } else {
           prevBtn.classList.remove('disabled');
+        }
+      },
+
+      toggleLikeButton: function( post ) {
+        if ( post !== null && !post.classList.contains('liked') ) {
+          document.querySelector('.js-like-post').classList.remove('liked');
+        } else if ( post !== null && post.classList.contains('liked') ) {
+          document.querySelector('.js-like-post').classList.add('liked');
         }
       }
 
