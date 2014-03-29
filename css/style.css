@@ -1,6 +1,6 @@
 /*!
  *  Profile Widget
- *
+ *  @author Marc Cometa ;)
  */
 
 
@@ -343,6 +343,27 @@ input, button, textarea {
   left: 50%;
 }
 
+  .modal .close-btn {
+    color: #777;
+    display: block; 
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    right: -20px;
+    text-align: center;
+    top: -30px;
+    width: 40px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .modal .close-btn:hover {
+    color: #222;
+  }
+
   .modal.slide {
     position: absolute;
     -webkit-transform: translateY(-1000%);
@@ -565,4 +586,73 @@ input, button, textarea {
     -o-transform: scale(1);
     transform: scale(1);
   }
+}
+
+/* == Responsive Styles */
+
+img {
+  max-width: 100%;
+}
+
+/* == Smartphones (portrait and landscape) */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .container {
+    width: 300px;
+    margin: 0 10px;
+  }
+
+  .profile .photo {
+    width: 90px;
+    margin-right: 0;
+  }
+
+  .photo img {
+    width: auto;
+  }
+
+  .profile .summary {
+    margin-left: 80px;
+  }
+
+  .profile .stats > .count {
+    line-height: 1;
+    
+  }
+
+  .profile .name {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+
+  .label {
+    font-size: 0.4em;
+    line-height: 1em;
+  }
+
+  .profile .stats > .count > .count {
+    font-size: 0.7em;
+  }
+
+  p.entry {
+    font-size: 0.6em;
+    line-height: 1.4em;;
+  }
+  
+  .post .meta {
+    font-size: 0.6em;
+  }
+}
+
+/* == Smartphones (landscape) */
+@media only screen 
+and (min-width : 321px) {
+
+}
+
+/* == Smartphones (portrait) */
+@media only screen 
+and (max-width : 320px) {
+
 }

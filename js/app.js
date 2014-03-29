@@ -188,13 +188,39 @@ var messages,
 
         var modalDiv = document.createElement("div");
         modalDiv.className = "modal slide";
-        var form = document.querySelector("#new-post");
+
+        var closeBtn = document.createElement("a"),
+            closeIcon = document.createElement("i");
+        closeBtn.className = "js-close-modal close-btn";
+        closeBtn.href = "#"
+        closeIcon.className = "fa fa-times-circle"
+        closeBtn.appendChild( closeIcon );
+
+        closeBtn.addEventListener('click', self.closeModal);
+
+        modalDiv.appendChild( closeBtn );
+
+        var form = document.querySelector("#new-post").cloneNode(true);
         modalDiv.appendChild( form );
-        form.classList.remove('hide')
+
+        form.classList.remove('hide');
         document.body.appendChild( modalDiv );
         setTimeout(function(){
           document.querySelector('.modal').classList.add('down');
         }, 450);
+      },
+
+      closeModal: function() {
+        var modal = document.querySelector('.modal'),
+            modalBg = document.querySelector('.modal-bg');
+        modal.classList.remove('down');
+        setTimeout( function() {
+          modalBg.classList.remove('show');
+        }, 310);
+        setTimeout( function() {
+          modal.remove();
+          modalBg.remove();
+        }, 320);
       },
 
       insertPost: function() {
