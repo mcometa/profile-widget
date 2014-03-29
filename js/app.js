@@ -44,23 +44,36 @@ var messages,
         // remove the button border, change the color to pink, increase the like count
 
         e.preventDefault();
-        e.cancelBubble = true;
 
         var postMetaLike = document.querySelector('.post.active .meta .likes .count'),
             activePost = document.querySelector('.post.active'),
-            likes;
+            likes = 0;
 
         // handle event bubbling the hard way
         if ( e.target.classList.contains('fa') ) {
-          if (!e.target.parentElement.classList.contains('liked')) {
-            e.target.parentElement.classList.add('liked');
+          var parentBtn = e.target.parentElement;
+          console.log(parentBtn);
+          if (!parentBtn.classList.contains('liked')) {
+            parentBtn.classList.add('liked');
             activePost.classList.add('liked');
             activePost.querySelector('.fa-heart').classList.add('pulsate-once');
             likes = parseInt(postMetaLike.textContent);
             likes+=1;
             postMetaLike.textContent = likes;
+          } else {
+            parentBtn.classList.remove('liked');
+            activePost.classList.remove('liked');
+            activePost.querySelector('.fa-heart').classList.add('pulsate-once');
+            likes = parseInt(postMetaLike.textContent);
+            likes-=1;
+            postMetaLike.textContent = likes;
           }
+
+          setTimeout( function() {
+            activePost.querySelector('.fa-heart').classList.remove('pulsate-once');
+          }, 300);
         } 
+        // the parent button is clicked
         if ( e.target.classList.contains('js-like-post') && !e.target.classList.contains('liked') ) {
           e.target.classList.add('liked');
           activePost.classList.add('liked');
@@ -71,7 +84,6 @@ var messages,
         }
 
 
-        console.log(e.target.classList);
       },
 
       nextPost: function(e) {

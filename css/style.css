@@ -281,10 +281,12 @@ input, button, textarea {
 .btn.js-like-post.liked {
   border-color: #aaa;
   color: #aaa;
-  background-color: transparent;
-  top: 0 !important;
-  cursor: default;
 }
+
+  .btn.js-like-post.liked:hover {
+    background-color: #aaa;
+    color: #fff;
+  }
 
 .btn.js-like-post.liked:hover i {
   -webkit-transform: scale(1);
