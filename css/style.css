@@ -598,9 +598,12 @@ img {
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
+  body {
+    margin: 0 15px;
+  }
+
   .container {
-    width: 300px;
-    margin: 0 10px;
+    width: 100%;
   }
 
   .profile .photo {
@@ -641,7 +644,68 @@ and (max-device-width : 480px) {
   }
   
   .post .meta {
-    font-size: 0.6em;
+    font-size: 0.8em !important;
+  }
+
+  .btn.big {
+    font-size: 0.8em;
+
+  }
+
+  .controls {
+    padding: 10px;
+  }
+
+  .new-post .post-controls {
+    right: 20px;
+  }
+
+  .nav > a {
+    font-size: 1em;
+  }
+
+  .nav > a.prev {
+    top: 0;
+    right: 40px;
+    left: auto !important;
+
+  }
+
+  .nav > a.next {
+    top: 0;
+    right: 10px !important;
+  }
+
+  .modal {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+    background: #fff;
+  }
+
+  .modal .close-btn {
+    right: 1px;
+    top: -15px;
+    z-index: 100;
+
+  }
+
+  .new-post .form {
+    width: 85%;
+    left: 50%;
+    margin-left: -43%;
+  }
+
+  .new-post .form textarea {
+    font-size: 0.8em;
+  }
+
+  .modal.slide.down {
+    -webkit-transform: translateY(-115%);
+    -moz-transform: trnslateY(-115%);
+    -ms-transform: trnslateY(-115%);
+    -o-transform: trnslateY(-115%);
+    transform: trnslateY(-115%);
   }
 }
 

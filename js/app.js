@@ -20,7 +20,7 @@ var messages,
 
         newPost.addEventListener('click', self.newPost, true);
         likePost.addEventListener('click', self.likePost, true);
-        replyPost.addEventListener('click', self.replyPost, true);
+        replyPost.addEventListener('click', self.newPost, true);
         nextPost.addEventListener('click', self.nextPost, true);
         prevPost.addEventListener('click', self.prevPost, true);
       },
