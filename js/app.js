@@ -1,5 +1,6 @@
 'use strict';
 var messages,
+    self,
     App = {
 
       messages: [
@@ -9,7 +10,8 @@ var messages,
       ],
       
       init: function() {
-        this.attachEvents();
+        self = this;
+        self.attachEvents();
         console.log("App:init()");
       },
 
@@ -21,11 +23,11 @@ var messages,
             prevPost  = document.querySelector('.js-prev-post');
 
 
-        newPost.addEventListener('click', this.newPost, false);
-        likePost.addEventListener('click', this.likePost, false);
-        replyPost.addEventListener('click', this.replyPost, false);
-        nextPost.addEventListener('click', this.nextPost, false);
-        prevPost.addEventListener('click', this.prevPost, false);
+        newPost.addEventListener('click', self.newPost, false);
+        likePost.addEventListener('click', self.likePost, false);
+        replyPost.addEventListener('click', self.replyPost, false);
+        nextPost.addEventListener('click', self.nextPost, false);
+        prevPost.addEventListener('click', self.prevPost, false);
       },
 
       newPost: function() {
@@ -47,7 +49,12 @@ var messages,
 
         if (nextPostToActive !== null) {
           activePost.classList.remove('active');
-          nextPostToActive.classList.add('active');          
+          activePost.classList.add('to-left');
+          
+          self.hideElement( activePost );
+
+          nextPostToActive.classList.remove('hide');
+          nextPostToActive.classList.add('active', 'to-left');          
         }
 
         console.log( nextPostToActive );
@@ -63,6 +70,12 @@ var messages,
         activePost.classList.remove('active');
         prevPostToActive.classList.add('active');
       },
+
+      hideElement: function(elem) {
+        setTimeout( function() {
+          elem.classList.add('hide');
+        }, 200);
+      }
 
 
 
